@@ -10,7 +10,7 @@ RUN mkdir -p /app/data
 FROM gcr.io/distroless/python3
 WORKDIR /src
 COPY --from=installer /app/myapp .
-COPY --from=installer --chown=65532:65532 /app/data .
+COPY --from=installer --chown=65532:65532 /app/data /data
 ENV PYTHONPATH=/src/lib/python3.12/site-packages
 COPY app.py .
 COPY templates/ ./templates/
