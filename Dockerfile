@@ -13,6 +13,7 @@ COPY --from=installer /app/myapp .
 COPY --from=installer --chown=65532:65532 /app/data .
 ENV PYTHONPATH=/src/lib/python3.12/site-packages
 COPY app.py .
+COPY templates/ ./templates/
 USER nonroot
 ENTRYPOINT ["python"]
 CMD ["app.py"]
