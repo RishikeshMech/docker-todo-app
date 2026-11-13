@@ -23,7 +23,7 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirnments.txt ]; then pip install -r requirnments.txt; fi
           pip install flake8 pytest
-          flake0 . --count --slelect=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --slelect=E9,F63,F7,F82 --show-source --statistics
           pytest || true
       - name: Set Up Docker Buildex 
         uses: docker/setup-buildx-action@v3
