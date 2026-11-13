@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
 env:
-  IMAGE_NAME: $${{ secrets.DOCKER_USERNAME }}/python-todo-app
+  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/python-todo-app
 jobs:
   build-test-and-push:
     runs-on: ubuntu-latest
@@ -33,11 +33,11 @@ jobs:
           context: .
           push: false 
           load: true 
-          tags: $${{ env.IMAGE_NAME }}:${{ github.sha }}
+          tags: ${{ env.IMAGE_NAME }}:${{ github.sha }}
       - name: Run Trivy 
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: $${{ env.IMAGE_NAME }}:${{ github.sha }}
+          image-ref: ${{ env.IMAGE_NAME }}:${{ github.sha }}
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
@@ -49,5 +49,5 @@ jobs:
           context: .
           push: true 
           tags: | 
-            $${{ env.IMAGE_NAME }}:$${{ github.sha }}
-            $${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.IMAGE_NAME }}:latest
