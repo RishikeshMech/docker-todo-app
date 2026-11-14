@@ -12,4 +12,4 @@ jobs:
         run: |
           echo "Repo: $GITHUB_REPOSITORY"
           echo "Commit: $GITHUB_SHA"
-          la -la 
+          ls -la 
